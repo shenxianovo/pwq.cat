@@ -1,31 +1,32 @@
-const title = document.querySelector("#pixel-title");
 const glyphs = {
-  p: ["11110", "10001", "10001", "11110", "10000", "10000", "10000"],
-  w: ["10001", "10001", "10001", "10101", "10101", "10101", "01010"],
-  q: ["01110", "10001", "10001", "10001", "10101", "10010", "01101"],
-  ".": ["000", "000", "000", "000", "000", "110", "110"],
-  c: ["01111", "10000", "10000", "10000", "10000", "10000", "01111"],
-  a: ["01110", "10001", "10001", "11111", "10001", "10001", "10001"],
-  t: ["11111", "00100", "00100", "00100", "00100", "00100", "00100"],
+  p: ["00000", "00000", "11110", "10001", "10001", "10001", "11110", "10000", "10000"],
+  w: ["00000", "00000", "10001", "10001", "10101", "10101", "01010", "00000", "00000"],
+  q: ["00000", "00000", "01111", "10001", "10001", "10001", "01111", "00001", "00001"],
+  ".": ["000", "000", "000", "000", "000", "110", "110", "000", "000"],
+  c: ["00000", "00000", "01111", "10000", "10000", "10000", "01111", "00000", "00000"],
+  a: ["00000", "00000", "01110", "00001", "01111", "10001", "01111", "00000", "00000"],
+  t: ["00100", "00100", "11111", "00100", "00100", "00100", "00011", "00000", "00000"],
 };
-let cursor = 0;
-for (const [index, letter] of [..."pwq.cat"].entries()) {
-  const rows = glyphs[letter];
-  for (const [y, row] of rows.entries()) {
-    for (const [x, pixel] of [...row].entries()) {
-      if (pixel !== "1") continue;
-      const square = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      square.setAttribute("x", cursor + x);
-      square.setAttribute("y", y + 1);
-      square.setAttribute("width", "1");
-      square.setAttribute("height", "1");
-      square.setAttribute("fill", index > 2 ? "var(--accent)" : "var(--ink)");
-      title.append(square);
+for (const title of document.querySelectorAll("#pixel-title, .wordmark-title")) {
+  let cursor = 0;
+  for (const [index, letter] of [..."pwq.cat"].entries()) {
+    const rows = glyphs[letter];
+    for (const [y, row] of rows.entries()) {
+      for (const [x, pixel] of [...row].entries()) {
+        if (pixel !== "1") continue;
+        const square = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        square.setAttribute("x", cursor + x);
+        square.setAttribute("y", y);
+        square.setAttribute("width", "1");
+        square.setAttribute("height", "1");
+        square.setAttribute("fill", title.id === "pixel-title" && index > 2 ? "var(--accent)" : "currentColor");
+        title.append(square);
+      }
     }
+    cursor += rows[0].length + 2;
   }
-  cursor += rows[0].length + 2;
+  title.setAttribute("viewBox", `0 0 ${cursor - 2} 9`);
 }
-title.setAttribute("viewBox", `0 0 ${cursor - 2} 9`);
 
 const root = document.documentElement;
 const toggle = document.querySelector(".theme-toggle");

@@ -75,6 +75,7 @@ button svg, a svg { display: block; }
 .site-header { min-height: 94px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
 .wordmark { color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 11px; font-size: 17px; font-weight: 700; letter-spacing: -.7px; }
 .wordmark svg { width: 24px; height: 24px; }
+.wordmark .wordmark-title { width: 90px; height: 18px; }
 .header-right { display: flex; align-items: center; gap: 27px; }
 .theme-toggle { padding: 12px; display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--line); font-size: 11px; }
 .theme-toggle:hover { background: var(--bar); }
@@ -103,11 +104,13 @@ h1 { margin: 0 auto; max-width: 460px; line-height: 1; }
 .cat-happy-eyes { display: none; }
 .cat-button:hover .cat-eyes, .cat-button.is-petted .cat-eyes { display: none; }
 .cat-button:hover .cat-happy-eyes, .cat-button.is-petted .cat-happy-eyes { display: block; }
-.heart { position: absolute; left: 48%; top: -14px; color: #b96a55; opacity: 0; font-size: 20px; pointer-events: none; }
+.heart { position: absolute; left: 48%; top: -14px; width: 22px; height: 20px; color: #b96a55; opacity: 0; pointer-events: none; }
+.heart svg { width: 100%; height: 100%; }
 .cat-button.is-petted .heart { animation: heart 1.4s steps(6, end) forwards; }
 .room-bottom { min-height: 57px; display: flex; justify-content: flex-end; align-items: center; padding: 8px 14px; border-top: 2px solid var(--ink); background: var(--paper); }
 .pet-button { flex-shrink: 0; border: 1px solid var(--button); background: var(--button); color: var(--paper); padding: 8px 13px; min-height: 40px; min-width: 44px; justify-content: center; display: flex; align-items: center; gap: 9px; box-shadow: 2px 2px 0 var(--line); font-size: 22px; line-height: 1; }
 .pet-button:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--line); }
+.pet-button svg { width: 22px; height: 20px; }
 .pet-button:active { transform: translate(1px, 1px); box-shadow: none; }
 .site-footer { display: flex; justify-content: center; padding: 30px 0; margin-top: 30px; color: var(--muted); border-top: 1px solid var(--line); font-size: 9px; letter-spacing: 1px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
